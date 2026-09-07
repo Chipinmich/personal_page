@@ -1,0 +1,68 @@
+---
+title: "What I Learned Building My First Computer Vision Model (Sample)"
+description: "Lessons from training and debugging my first image classifier, most of which had nothing to do with the model."
+date: "2026-09-06"
+github: ""
+tags:
+  - machine-learning
+  - python
+  - computer-vision
+sample: true
+---
+
+<Note>
+Sample post, included to demonstrate the writing layout and the MDX pipeline.
+It is not a record of real work.
+</Note>
+
+The model was the easy part. Almost everything that went wrong happened before
+the first epoch or after the last one.
+
+## The data was the model
+
+I spent the first evening tuning layer sizes and the next three days discovering
+that a third of one class was mislabelled. Accuracy moved further from fixing the
+labels than from any architectural change I made.
+
+The lesson I actually took: look at the data first, in the same form the model
+sees it. Not a summary table — the actual images, after preprocessing.
+
+## Validation accuracy is not one number
+
+Overall accuracy hid the fact that the model was near-perfect on four classes and
+close to random on two. A confusion matrix took ten minutes to produce and
+changed what I worked on next.
+
+```python
+from sklearn.metrics import confusion_matrix
+
+matrix = confusion_matrix(y_true, y_pred)
+for row, label in zip(matrix, class_names):
+    print(f"{label:>20}  {row}")
+```
+
+## Reproducibility is a debugging tool
+
+For the first week, no two runs matched, so I could not tell whether a change had
+helped or the seed had. Pinning the seed and logging the config with every run
+turned "it seems better" into something I could check.
+
+| Before | After |
+| --- | --- |
+| Change, run, squint | Change, run, compare |
+| Results in scrollback | Results in a file |
+| One run per idea | Repeated runs per idea |
+
+## What I would do differently
+
+- Build the evaluation harness before the model.
+- Look at a random sample of misclassified examples every single time.
+- Write down the hypothesis before the run, not after seeing the number.
+
+> The model is the part that gets the attention, and it is rarely the part that
+> is wrong.
+
+## Next
+
+The obvious follow-up is augmentation, but only after the labels are clean.
+Fixing the data first makes every later comparison mean something.

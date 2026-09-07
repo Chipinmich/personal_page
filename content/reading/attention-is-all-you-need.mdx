@@ -1,0 +1,50 @@
+---
+title: "Attention Is All You Need"
+authors:
+  - "Ashish Vaswani"
+  - "Noam Shazeer"
+  - "Niki Parmar"
+type: "Research Paper"
+status: "Reading"
+started: "2026-09-01"
+completed: ""
+url: "https://arxiv.org/abs/1706.03762"
+image: ""
+tags:
+  - transformers
+  - machine-learning
+featured: true
+sample: true
+---
+
+<Note>
+Sample reading entry, included to demonstrate the notes layout. These are
+placeholder notes, not a real record of study.
+</Note>
+
+## Why I picked it up
+
+Almost everything I read about modern machine learning refers back to this paper.
+Reading the thing that gets cited seemed better than continuing to read summaries
+of it.
+
+## Key takeaways
+
+- The central claim is that recurrence is not required — attention alone is
+  enough to model sequence relationships.
+- Removing sequential dependence is what makes the architecture parallelisable,
+  which is as much an engineering result as a modelling one.
+- Positional encoding exists because dropping recurrence also drops the model's
+  sense of order. It has to be added back explicitly.
+
+## Questions I still have
+
+- How much of the practical benefit comes from the architecture itself versus
+  from being able to train on far more data in the same wall-clock time?
+- What does multi-head attention actually specialise into, and is that
+  interpretable in practice or only in tidy examples?
+
+## Follow-ups
+
+Come back to the positional-encoding section after working through the maths
+properly, rather than accepting it as given.

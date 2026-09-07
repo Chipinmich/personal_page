@@ -1,0 +1,40 @@
+---
+title: "Watching A* and Dijkstra Disagree (Sample)"
+description: "A small visualiser built to see where a heuristic actually changes the search, rather than reading that it does."
+date: "2026-08-10"
+github: ""
+image: ""
+technologies:
+  - TypeScript
+  - Algorithms
+  - Canvas
+status: "Experiment"
+sample: true
+---
+
+<Note>
+Sample lab entry, included to demonstrate the layout. Not a record of real work.
+</Note>
+
+## The question
+
+Everyone says A* explores fewer nodes than Dijkstra. On what kind of map, and by
+how much?
+
+## Approach
+
+Draw both searches on the same grid, step for step, and count expanded nodes.
+Then break the heuristic on purpose and watch what happens.
+
+```ts
+type Node = { x: number; y: number };
+
+const manhattan = (a: Node, b: Node): number =>
+  Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+```
+
+## What I expect
+
+That the advantage collapses on maps with lots of walls, because the heuristic
+keeps pointing the search into dead ends. Seeing that happen frame by frame is
+the whole point of building the visualiser instead of reading about it.

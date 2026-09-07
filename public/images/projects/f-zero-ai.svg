@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Abstract illustration of a racing line curving into the distance over a dark technical grid">
+  <title>Abstract racing line</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b0e15"/>
+      <stop offset="55%" stop-color="#0a0d14"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+
+    <radialGradient id="horizonGlow" cx="50%" cy="46%" r="42%">
+      <stop offset="0%" stop-color="#7c8cff" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#68a7ff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#68a7ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="trackFill" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#7c8cff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#7c8cff" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <linearGradient id="edgeLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c8cff" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#7c8cff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#8b7cff" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="edgeRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#68a7ff" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#68a7ff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#7c8cff" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <linearGradient id="racingLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#78e6c8" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#78e6c8" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#78e6c8" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#d8dce7" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+
+    <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <mask id="gridMask">
+      <rect width="1200" height="675" fill="url(#gridFade)"/>
+    </mask>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#grid)" mask="url(#gridMask)"/>
+  <rect width="1200" height="675" fill="url(#horizonGlow)"/>
+
+  <!-- Horizon -->
+  <line x1="0" y1="312" x2="1200" y2="312" stroke="#273142" stroke-width="1"/>
+  <line x1="430" y1="312" x2="770" y2="312" stroke="#7c8cff" stroke-opacity="0.5" stroke-width="1"/>
+
+  <!-- Track surface receding to a vanishing point -->
+  <path d="M600 312 L980 675 L220 675 Z" fill="url(#trackFill)"/>
+
+  <!-- Track edges -->
+  <path d="M600 312 L220 675" stroke="url(#edgeLeft)" stroke-width="2.5" fill="none"/>
+  <path d="M600 312 L980 675" stroke="url(#edgeRight)" stroke-width="2.5" fill="none"/>
+
+  <!-- Lane markers, spaced to imply speed -->
+  <g stroke="#d8dce7" stroke-opacity="0.16" stroke-width="1.5">
+    <line x1="592" y1="352" x2="608" y2="352"/>
+    <line x1="584" y1="398" x2="616" y2="398"/>
+    <line x1="572" y1="456" x2="628" y2="456"/>
+    <line x1="556" y1="528" x2="644" y2="528"/>
+    <line x1="534" y1="618" x2="666" y2="618"/>
+  </g>
+
+  <!-- The learned racing line: an ideal path through the corner -->
+  <path d="M300 675 C 430 560, 470 470, 566 380 S 640 330, 690 312"
+        fill="none" stroke="url(#racingLine)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Candidate paths, faint: the population still searching -->
+  <g fill="none" stroke="#7c8cff" stroke-opacity="0.18" stroke-width="1.5">
+    <path d="M250 675 C 400 570, 500 480, 578 372 S 646 328, 700 312"/>
+    <path d="M360 675 C 452 556, 470 462, 556 384 S 638 332, 684 312"/>
+    <path d="M430 675 C 486 548, 496 458, 570 378 S 642 330, 694 312"/>
+  </g>
+
+  <!-- Orbital arc, echoing the site visual language -->
+  <ellipse cx="600" cy="312" rx="330" ry="86" fill="none" stroke="#7c8cff" stroke-opacity="0.18" stroke-width="1"/>
+  <ellipse cx="600" cy="312" rx="196" ry="52" fill="none" stroke="#68a7ff" stroke-opacity="0.14" stroke-width="1"/>
+
+  <!-- Telemetry nodes -->
+  <g fill="#7c8cff">
+    <circle cx="930" cy="312" r="3" fill-opacity="0.8"/>
+    <circle cx="270" cy="312" r="2" fill-opacity="0.55"/>
+    <circle cx="796" cy="286" r="2" fill-opacity="0.45"/>
+    <circle cx="404" cy="286" r="2" fill-opacity="0.4"/>
+  </g>
+  <circle cx="690" cy="312" r="4" fill="#78e6c8" fill-opacity="0.9"/>
+</svg>

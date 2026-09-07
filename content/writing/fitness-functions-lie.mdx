@@ -1,0 +1,51 @@
+---
+title: "Fitness Functions Reward What You Wrote, Not What You Meant (Sample)"
+description: "Notes on why a genetic algorithm that is working perfectly can still produce something useless."
+date: "2026-08-27"
+github: ""
+tags:
+  - genetic-algorithms
+  - machine-learning
+  - game-ai
+sample: true
+---
+
+<Note>
+Sample post, included to demonstrate the writing layout. Not a record of real
+work.
+</Note>
+
+A genetic algorithm does exactly one thing: it finds whatever maximises the
+number you gave it. If that number is a poor proxy for what you wanted, the
+search will find the gap, and it will find it faster than you expect.
+
+## The proxy problem
+
+Suppose you reward distance travelled. The population learns to travel distance.
+Not to race — to travel distance. If reversing in circles accumulates distance,
+that is a valid solution to the problem you actually posed.
+
+```python
+def fitness(run: Run) -> float:
+    # Rewards motion, not progress. Circles score well.
+    return run.total_distance
+```
+
+Rewriting it in terms of progress along the track closes that particular gap, and
+opens a different one.
+
+## Things that helped
+
+- **Watch the best individual, not the score.** A number going up tells you the
+  search is working. It does not tell you the behaviour is what you wanted.
+- **Write down what you expect before the run.** If the winning strategy
+  surprises you, the fitness function is more likely to be wrong than the agent
+  is to be clever.
+- **Change one term at a time.** Fitness terms interact, and a combined change
+  leaves you unable to attribute the result.
+
+## The uncomfortable part
+
+Most of the design work is not in the algorithm. It is in stating precisely what
+counts as good, which turns out to be much harder than it sounds — and every
+vague clause in that definition is somewhere the search will eventually go.

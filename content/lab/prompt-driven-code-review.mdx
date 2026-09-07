@@ -1,0 +1,39 @@
+---
+title: "Can an LLM Review My Own Pull Requests? (Sample)"
+description: "A weekend experiment pointing a language model at my own diffs to see whether the feedback is useful or just confident."
+date: "2026-08-24"
+github: ""
+image: ""
+technologies:
+  - Python
+  - LLMs
+  - Git
+status: "Experiment"
+sample: true
+---
+
+<Note>
+Sample lab entry, included to demonstrate the layout. Not a record of real work.
+</Note>
+
+## The question
+
+If I feed a model my own diffs, does it find real problems, or does it produce
+plausible-sounding notes that would waste a reviewer's time?
+
+## Method
+
+Take a set of commits where I already know what the bug was, strip the commit
+messages, and ask for a review of the diff alone. Score each response on whether
+it names the actual defect, not on whether it sounds reasonable.
+
+## What I want to learn
+
+Mostly whether the useful signal survives when the model has no context beyond
+the diff. My guess is that it catches mechanical mistakes and misses everything
+that depends on knowing what the code is for.
+
+## Notes
+
+The scoring is the hard part. Judging output by whether it *feels* insightful is
+exactly the trap this experiment is meant to avoid.

@@ -1,0 +1,194 @@
+---
+title: "Training an AI to Race in F-Zero"
+description: "Experimenting with machine learning and genetic algorithms to train an AI agent to complete a race in F-Zero."
+date: "2026-09-06"
+github: ""
+demo: ""
+image: "/images/projects/f-zero-ai.svg"
+technologies:
+  - Python
+  - Machine Learning
+  - Genetic Algorithms
+featured: true
+featuredOrder: 1
+status: "In Progress"
+---
+
+## The Goal
+
+Train an AI-controlled racer that can learn to navigate an F-Zero-style racing
+environment and, eventually, complete a full race without hitting a wall or
+stalling out.
+
+"Complete a race" is the bar I set on purpose. It is concrete, it is binary, and
+it is far enough away that getting there requires the agent to actually learn
+something rather than exploit a quirk of the environment. Lap times come later,
+if at all.
+
+<Note>
+F-Zero is a Nintendo trademark. This project is a personal machine-learning
+experiment that runs against a locally emulated copy of a game I own. Nothing in
+this write-up reproduces game artwork, audio, or code, and the visuals on this
+page are original abstract illustrations.
+</Note>
+
+## Why I'm Building It
+
+I wanted a problem where I could see the learning happen. A classifier gives you
+a number that goes up; a racing agent gives you a car that either makes the
+corner or does not. That feedback loop is much more motivating when you are
+trying to build intuition for how these algorithms actually behave.
+
+Genetic algorithms were the specific draw. They are conceptually simple enough
+that I can implement one from scratch and understand every line, but they have
+enough moving parts — fitness design, selection pressure, mutation rate — that
+getting them to work well is genuinely hard. That gap between "simple to
+describe" and "hard to tune" is where I learn the most.
+
+It is also an excuse to work on something end to end: reading memory out of a
+running process, designing a state representation, building an evaluation
+harness, and running experiments long enough to draw conclusions from them.
+
+## How It Works
+
+These sections are the working documentation for the system. They fill in as the
+implementation settles.
+
+### Game and environment interface
+
+_How the agent connects to the running game: emulator, stepping, resets, and
+frame pacing._
+
+**To document:** which emulator, how frames are advanced, how a run is reset to
+a known starting state, and how much of the loop is deterministic.
+
+### Observations and input data
+
+_What the agent can actually see on any given frame._
+
+**To document:** the memory addresses being read, how raw values are normalised,
+what track geometry is exposed, and how far ahead the agent can sense.
+
+### Agent actions
+
+_The control surface the agent has to work with._
+
+**To document:** the action space (discrete button presses versus something
+finer), how often actions are allowed to change, and whether inputs are held
+across frames.
+
+### Evaluation method
+
+_How a single run is scored._
+
+**To document:** what ends a run, how long a run is allowed to last, and how many
+runs each candidate gets before its score counts.
+
+### Fitness function
+
+_The single number that decides which candidates survive._
+
+**To document:** the terms currently in the fitness function, their weights, and
+the reasoning behind each one. This is the part I expect to rewrite most often.
+
+### Selection
+
+_How parents are chosen for the next generation._
+
+**To document:** the selection scheme, how much elitism is preserved, and how
+selection pressure is kept from collapsing diversity too early.
+
+### Crossover
+
+_How two parents are combined into a child._
+
+**To document:** what gets recombined, at what granularity, and whether crossover
+is helping or just adding noise.
+
+### Mutation
+
+_How new variation is introduced._
+
+**To document:** mutation rate, mutation magnitude, and whether either is
+annealed as generations progress.
+
+### Generation-to-generation improvement
+
+_What actually changes between generations._
+
+**To document:** how population statistics are tracked, and what evidence would
+convince me that a change to the algorithm helped rather than got lucky.
+
+## Training Progress
+
+A running log of what each stage of training actually looked like. Nothing is
+filled in here until there are real runs behind it — I would rather this section
+stay empty than post numbers I cannot reproduce.
+
+Each entry is meant to hold the generation count, fitness score, distance
+travelled, best lap, completion percentage, and whatever screenshots, charts,
+GIFs or clips are worth keeping.
+
+### Generation 1
+
+_Not yet recorded._
+
+| Metric | Value |
+| --- | --- |
+| Best fitness | — |
+| Distance travelled | — |
+| Best lap | — |
+| Completion | — |
+
+**Notes:** —
+
+### Generation 25
+
+_Not yet recorded._
+
+| Metric | Value |
+| --- | --- |
+| Best fitness | — |
+| Distance travelled | — |
+| Best lap | — |
+| Completion | — |
+
+**Notes:** —
+
+### Generation 100
+
+_Not yet recorded._
+
+| Metric | Value |
+| --- | --- |
+| Best fitness | — |
+| Distance travelled | — |
+| Best lap | — |
+| Completion | — |
+
+**Notes:** —
+
+## What I'm Learning
+
+Kept as a running list rather than a conclusion, because most of these are still
+open questions.
+
+- **Genetic algorithms.** Population dynamics, why diversity collapses, and how
+  much of the outcome is decided by the fitness function rather than the search.
+- **Fitness function design.** How easy it is to write a fitness function that
+  rewards something other than what you meant.
+- **Exploration versus optimisation.** When to let the population wander and
+  when to tighten selection pressure.
+- **Machine learning fundamentals.** State representation, normalisation, and
+  why the input encoding often matters more than the algorithm.
+- **Game AI.** Working against an environment that was never designed to be
+  driven by a program.
+- **Python.** Structuring long-running experiments so results are reproducible
+  and runs can be compared honestly.
+- **Debugging autonomous agents.** Telling apart a broken environment, a broken
+  fitness function, and an agent that simply has not learned yet.
+
+## Code
+
+The repository link appears at the top of this page as soon as the `github`
+field is filled in. Until then, the write-up is the record.

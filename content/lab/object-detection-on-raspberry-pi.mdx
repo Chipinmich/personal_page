@@ -1,0 +1,52 @@
+---
+title: "Testing Object Detection on a Raspberry Pi (Sample)"
+description: "Experimenting with real-time object detection on inexpensive hardware to see where the frame rate actually falls over."
+date: "2026-09-01"
+github: ""
+image: ""
+technologies:
+  - Python
+  - OpenCV
+  - Raspberry Pi
+status: "Experiment"
+sample: true
+---
+
+<Note>
+Sample lab entry, included to demonstrate the layout. Not a record of real work.
+</Note>
+
+## The question
+
+How much object detection can a Raspberry Pi actually do in real time before the
+frame rate becomes useless?
+
+## Setup
+
+- A single USB camera at 640×480.
+- A small pre-trained detection model, run per frame with no tracking.
+- Frame times measured over a fixed two-minute window rather than eyeballed.
+
+```python
+import time
+
+frame_times: list[float] = []
+
+while capturing:
+    start = time.perf_counter()
+    frame = camera.read()
+    detections = model(frame)
+    frame_times.append(time.perf_counter() - start)
+```
+
+## What I expect to find
+
+That preprocessing, not inference, is where a surprising share of the time goes —
+and that resizing on the camera rather than in Python moves the number more than
+swapping models does.
+
+## Where this could go
+
+If the frame rate holds up, this becomes the perception half of a small robot.
+If it does not, the interesting question becomes what has to be given up first:
+resolution, frame rate, or model size.

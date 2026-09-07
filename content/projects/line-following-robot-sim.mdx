@@ -1,0 +1,47 @@
+---
+title: "Line-Following Robot Simulation (Sample)"
+description: "Placeholder robotics project: a simulated differential-drive robot that learns to follow a track using a simple controller."
+date: "2026-07-29"
+github: ""
+demo: ""
+image: ""
+technologies:
+  - Python
+  - Robotics
+  - Simulation
+  - Control Systems
+featured: true
+featuredOrder: 3
+status: "Planned"
+sample: true
+---
+
+<Note>
+This is sample content included to demonstrate the project layout. It does not
+describe work that has been done.
+</Note>
+
+## The Goal
+
+Simulate a differential-drive robot following a painted line, and compare a
+hand-tuned controller against a learned one on the same track.
+
+## Why This Project
+
+Simulation removes the parts of robotics that make iteration slow — batteries,
+wiring, physical damage — while keeping the parts that make it hard: noisy
+sensors, delayed actuation, and the gap between what the model assumes and what
+the world does.
+
+## Planned Structure
+
+- **Physics.** A minimal differential-drive model with configurable wheel slip.
+- **Sensing.** A small array of downward-facing brightness sensors with noise.
+- **Baseline.** A PID controller tuned by hand, used as the bar to beat.
+- **Learned controller.** The same task, with the control policy learned instead
+  of tuned.
+- **Comparison.** Both controllers, identical tracks, repeated runs.
+
+## Notes
+
+Replace this file with a real project, or delete it.
