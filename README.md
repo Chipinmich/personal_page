@@ -550,8 +550,6 @@ Before this goes anywhere public:
 - **`content/now.mdx`** — placeholder Now page.
 - **Sample content** — every seeded entry is marked `sample: true` and labelled
   in the UI. Delete or replace:
-  - `content/projects/traffic-sign-classifier.mdx`
-  - `content/projects/line-following-robot-sim.mdx`
   - all three files in `content/lab/`
   - all three files in `content/writing/`
   - all five files in `content/reading/`

@@ -12,9 +12,12 @@ export const siteConfig = {
   monogram: "CW",
   title: "Charles Walsworth",
   description:
-    "Computer science student exploring AI, machine learning, robotics, and software engineering. Projects, experiments, writing, and reading notes.",
-  tagline: "Computer Science Student",
+    "First-year computer science student at the University of Michigan exploring AI, machine learning, robotics, and software engineering. Projects, experiments, writing, and reading notes.",
+  tagline: "First-Year Computer Science Student",
   focus: "AI · Machine Learning · Robotics · Software Engineering",
+  /** The paragraph under the hero heading. Edit it here, not in the component. */
+  intro:
+    "I am a first-year computer science student at the University of Michigan who enjoys building, learning, and exploring the intersection of AI, robotics, and real-world software.",
   // Used for canonical URLs, Open Graph, sitemap and RSS.
   // On Vercel this is picked up automatically from the deployment URL when
   // NEXT_PUBLIC_SITE_URL is not set.

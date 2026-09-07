@@ -48,13 +48,14 @@ export function Hero() {
               {siteConfig.tagline}
             </p>
 
-            <p className="mt-2 font-mono text-[0.8125rem] tracking-wide text-accent">
+            <p className="mt-1.5 text-[0.9375rem] text-muted">{siteConfig.school}</p>
+
+            <p className="mt-3 font-mono text-[0.8125rem] tracking-wide text-accent">
               {siteConfig.focus}
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-secondary">
-              I am a computer science student who enjoys building, learning, and exploring
-              the intersection of AI, robotics, and real-world software.
+              {siteConfig.intro}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
